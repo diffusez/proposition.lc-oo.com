@@ -23,7 +23,7 @@ readonly class ContratDTO
         #[Assert\NotBlank]
         public string $commune,
         public DateTimeImmutable $dateDebut,
-        #[Assert\GreaterThanOrEqual(propertyPath: 'dateDebut', message: 'La date de fin doit être postérieure à la date de début.')]
+        #[Assert\GreaterThanOrEqual(propertyPath: 'dateDebut', message: 'La date de fin ne peut pas être antérieure à la date de début.')]
         public DateTimeImmutable $dateFin,
         #[Assert\Positive]
         public int $dureeMois,
