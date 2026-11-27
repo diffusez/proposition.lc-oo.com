@@ -2,40 +2,42 @@
 
 namespace App\DTO;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 readonly class PointDeVenteDTO
 {
     /**
-     * @param string|null $nomMarque
-     * @param string $nom
-     * @param string|null $logo
-     * @param string|null $logoMarque
-     * @param string $adresse
-     * @param string $cp
-     * @param string $commune
-     * @param string|null $tel
-     * @param string|null $fax
-     * @param float|null $latitude
-     * @param float|null $longitude
      * @param ContratDTO[] $contrats
-     * @param TotalDTO $totalContrats
      * @param ContratDTO[] $propositions
-     * @param TotalDTO $totalPropositions
      */
     public function __construct(
         public ?string $nomMarque,
+        #[Assert\NotBlank]
         public string $nom,
+        #[Assert\Url(requireTld: true)]
         public ?string $logo,
+        #[Assert\Url(requireTld: true)]
         public ?string $logoMarque,
+        #[Assert\NotBlank]
         public string $adresse,
+        #[Assert\NotBlank]
+        #[Assert\Regex(pattern: '/^\d{5}$/', message: 'Le code postal doit contenir 5 chiffres.')]
         public string $cp,
+        #[Assert\NotBlank]
         public string $commune,
         public ?string $tel,
         public ?string $fax,
+        #[Assert\Range(min: -90, max: 90)]
         public ?float $latitude,
+        #[Assert\Range(min: -180, max: 180)]
         public ?float $longitude,
+        #[Assert\Valid]
         public array $contrats,
+        #[Assert\Valid]
         public TotalDTO $totalContrats,
+        #[Assert\Valid]
         public array $propositions,
+        #[Assert\Valid]
         public TotalDTO $totalPropositions,
     )
     {

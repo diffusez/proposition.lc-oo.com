@@ -9,4 +9,5 @@ composer require twig/intl-extra
 composer require twig/string-extra
 composer require symfony/mailer
 composer require symfony/asset
+composer require symfony/validator
 ```
