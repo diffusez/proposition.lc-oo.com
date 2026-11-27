@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title '' %}</title>
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ assets_version }}">
+        {% block before_head_end '' %}
+    </head>
+    <body>
+        {% block body '' %}
+        <script src="{{ asset('dist/bundle.js') }}?v={{ assets_version }}"></script>
+        {% block before_body_end '' %}
+    </body>
+</html>
